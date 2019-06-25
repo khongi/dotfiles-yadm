@@ -39,3 +39,6 @@ set wildmode=longest,list,full
 set wildmenu
 autocmd BufWritePre * %s/\s\+$//e
 
+" Ali: to indent json files on save
+autocmd FileType json autocmd BufWritePre <buffer> %!jq .
+
