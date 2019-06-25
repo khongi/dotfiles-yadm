@@ -1,0 +1,44 @@
+# This is Git's per-user configuration file.
+[includeIf "gitdir:C:/Users/LocalAdmin/Sources.Autsoft/"]
+	path = .gitconfig-autsoft
+[includeIf "gitdir:C:/Users/LocalAdmin/Sources.Personal/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:C:/Users/LocalAdmin/Sources.DOD/"]
+	path = .gitconfig-dod
+[merge]
+	tool = vimdiff
+[push]
+	default = simple
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[core]
+	pager = LESSCHARSET=utf-8 less -R
+	longpaths = true
+	editor = vim
+	autocrlf = true
+	filemode = false
+[difftool "sourcetree"]
+	cmd = 'meld' $LOCAL $REMOTE
+[alias]
+	co = checkout
+	st = status
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	s = status -s
+	so = remote show origin
+	rso = remote
+	last = log -1 HEAD
+	ctemp = commit -a -m temp
+	f = fetch
+	mas = checkout master
+	khb = checkout khb
+	mm = merge master
+	mk = merge khb
+	ca = commit -a -m
+[mergetool "sourcetree"]
+	cmd = 'meld' $LOCAL $MERGED $REMOTE
+	trustExitCode = true
+[color]
+	ui = true
