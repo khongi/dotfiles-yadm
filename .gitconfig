@@ -1,4 +1,7 @@
 # This is Git's per-user configuration file.
+[user]
+	name = Khongor Bayarsaikhan
+	email = b.khongi@gmail.com
 [includeIf "gitdir:C:/Users/LocalAdmin/Sources.Autsoft/"]
 	path = .gitconfig-autsoft
 [includeIf "gitdir:C:/Users/LocalAdmin/Sources.Personal/"]
