@@ -2,10 +2,18 @@
 [user]
 	name = Khongor Bayarsaikhan
 	email = b.khongi@gmail.com
+[includeIf "gitdir:~/Sources/Autsoft/"]
+	path = .gitconfig-autsoft
 [includeIf "gitdir:~/Sources.Autsoft/"]
 	path = .gitconfig-autsoft
 [includeIf "gitdir:~/Sources.Personal/"]
 	path = .gitconfig-personal
+[includeIf "gitdir:~/Sources/Personal/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:~/Sources/Edu/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:~/Sources/DOD/"]
+	path = .gitconfig-dod
 [includeIf "gitdir:~/Sources.DOD/"]
 	path = .gitconfig-dod
 [merge]
