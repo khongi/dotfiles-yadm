@@ -28,7 +28,6 @@
 	pager = LESSCHARSET=utf-8 less -R
 	longpaths = true
 	editor = vim
-	autocrlf = true
 	filemode = false
 [difftool "sourcetree"]
 	cmd = 'meld' $LOCAL $REMOTE
