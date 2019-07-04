@@ -146,11 +146,12 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #screenfetch
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias lg="git lg"
 
 # Set nano as default editor
-export EDITOR=nano
+export EDITOR=vim
 
 # Set ANDROID_HOME
 export ANDROID_HOME=/home/khongor/Android/Sdk/
