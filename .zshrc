@@ -5,7 +5,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/khongor/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -111,7 +111,7 @@ DEFAULT_USER=$USER
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-autocompletions zsh-syntax-highlighting
+  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting chucknorris
 )
 autoload -U compinit && compinit
 
@@ -154,8 +154,10 @@ alias lg="git lg"
 export EDITOR=vim
 
 # Set ANDROID_HOME
-export ANDROID_HOME=/home/khongor/Android/Sdk/
+# export ANDROID_HOME=/home/khongor/Android/Sdk/
 
 # Add ruby to PATH
-export PATH=/home/khongor/.gem/ruby/2.5.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+
+chuck_cow
 
