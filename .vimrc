@@ -18,7 +18,7 @@ set statusline=%t%m%r%h%w%=\ %Y\ %l,%v\ %p%%\ [%L]
 
 " GUI options for when that's appropriate
 set background=dark
-colorscheme evening
+" colorscheme evening
 set guioptions-=T
 set guioptions-=r
 set guioptions-=m
