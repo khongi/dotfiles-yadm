@@ -47,6 +47,7 @@
 	mm = merge master
 	mk = merge khb
 	ca = commit -a -m
+	c = commit -m
 [mergetool "sourcetree"]
 	cmd = 'meld' $LOCAL $MERGED $REMOTE
 	trustExitCode = true
