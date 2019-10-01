@@ -6,6 +6,8 @@
 	path = .gitconfig-autsoft
 [includeIf "gitdir:~/Sources.Autsoft/"]
 	path = .gitconfig-autsoft
+[includeIf "gitdir:~/Sources/AutSoft/"]
+	path = .gitconfig-autsoft
 [includeIf "gitdir:~/Sources.Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Personal/"]
