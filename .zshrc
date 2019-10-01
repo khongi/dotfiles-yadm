@@ -156,8 +156,8 @@ export EDITOR=vim
 # Set ANDROID_HOME
 # export ANDROID_HOME=/home/khongor/Android/Sdk/
 
-# Add ruby to PATH
-export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
+# Add scripts to PATH
+export PATH=$HOME/.scripts:$PATH
 
 chuck_cow
 
