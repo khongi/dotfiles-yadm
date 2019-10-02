@@ -43,6 +43,9 @@ if [ "$system_type" = "Linux" ]; then
     fi
 fi
 
+printf "\nDecrypting files...\n"
+yadm decrypt
+
 printf "\nUpdating the yadm repo origin URL\n"
 yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
 
