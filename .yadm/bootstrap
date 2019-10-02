@@ -43,4 +43,7 @@ if [ "$system_type" = "Linux" ]; then
     fi
 fi
 
+printf "\nUpdating the yadm repo origin URL\n"
+yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
+
 printf "\n=== Finished bootstrap ===\n"
