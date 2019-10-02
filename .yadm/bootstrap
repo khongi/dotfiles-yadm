@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# Khongor Bayarsaikhan - 2019
+
+printf "=== Starting bootstrap ===\n\n"
+
+system_type=$(uname -s)
+
+ZSH_ROOT=".oh-my-zsh"
+ZSH_CUSTOM="$ZSH_ROOT/custom/plugins"
+
+if [ "$system_type" = "Linux" ]; then
+    # Install Oh-My-Zsh
+    if [ ! -d "$ZSH_ROOT" ]; then
+        echo "- Installing Oh My Zsh..."
+        curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    else
+    	echo "- Oh My Zsh already installed"
+    fi
+
+    # Install zsh-nvm
+    if [ ! -d "$ZSH_CUSTOM/zsh-nvm" ]; then
+        echo "- Installing zsh-nvm..."
+        git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM/zsh-nvm
+    else
+    	echo "- zsh-nvm already installed"
+    fi
+
+    # Install zsh-autosuggestions
+    if [ ! -d "$ZSH_CUSTOM/zsh-autosuggestions" ]; then
+        echo "- Installing zsh-autosuggestions..."
+        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/zsh-autosuggestions
+    else
+    	echo "- zsh-autosuggestions already installed"
+    fi
+
+    # Install zsh-syntax-highlighting
+    if [ ! -d "$ZSH_CUSTOM/zsh-syntax-highlighting" ]; then
+        echo "- Installing zsh-syntax-highlighting..."
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/zsh-syntax-highlighting
+    else
+    	echo "- zsh-syntax-highlighting already installed"
+    fi
+fi
+
+printf "\n=== Finished bootstrap ===\n"
