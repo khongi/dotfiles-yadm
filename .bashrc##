@@ -6,5 +6,6 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias lg='git lg'
 PS1='[\u@\h \W]\$ '
 
