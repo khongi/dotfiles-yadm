@@ -26,6 +26,7 @@ alias free='free -m'                      # show sizes in MB
 alias more=less
 alias la='ls -la'
 alias cls='clear'
+alias lg='git lg'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
