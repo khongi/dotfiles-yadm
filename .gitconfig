@@ -1,32 +1,44 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Khongor Bayarsaikhan
-	email = khongor.bayarsaikhan@dod-software.com
-	signingKey = ""
-[includeIf "gitdir:~/Sources/Autsoft/"]
-	path = .gitconfig-autsoft
-[includeIf "gitdir:~/Sources.Autsoft/"]
-	path = .gitconfig-autsoft
-[includeIf "gitdir:~/Sources/AutSoft/"]
-	path = .gitconfig-autsoft
+	email = b.khongi@gmail.com
+	
 [includeIf "gitdir:~/Sources.Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Personal/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources.Edu/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources/Edu/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:S:/Sources.Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:S:/Sources/Personal/"]
 	path = .gitconfig-personal
+
+[includeIf "gitdir:~/Sources.Edu/"]
+	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Edu/"]
 	path = .gitconfig-personal
-[includeIf "gitdir:~/Sources/DOD/"]
-	path = .gitconfig-dod
+[includeIf "gitdir:S:/Sources.Edu/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:S:/Sources/Edu/"]
+	path = .gitconfig-personal
+
+[includeIf "gitdir:~/Sources.Autsoft/"]
+	path = .gitconfig-autsoft
+[includeIf "gitdir:~/Sources/Autsoft/"]
+	path = .gitconfig-autsoft
+[includeIf "gitdir:S:/Sources.AutSoft/"]
+	path = .gitconfig-autsoft
+[includeIf "gitdir:S:/Sources/AutSoft/"]
+	path = .gitconfig-autsoft
+
 [includeIf "gitdir:~/Sources.DOD/"]
 	path = .gitconfig-dod
+[includeIf "gitdir:~/Sources/DOD/"]
+	path = .gitconfig-dod
+[includeIf "gitdir:S:/Sources.DOD/"]
+	path = .gitconfig-dod
+[includeIf "gitdir:S:/Sources/DOD/"]
+	path = .gitconfig-dod
+
 [merge]
 	tool = vimdiff
 [push]
@@ -53,19 +65,13 @@
 	last = log -1 HEAD
 	ctemp = commit -a -m temp
 	f = fetch
-	mas = checkout master
-	khb = checkout khb
-	mm = merge master
-	mk = merge khb
-	ca = commit -a -m
-	c = commit -m
+	ca = commit -a
+	c = commit
 [mergetool "sourcetree"]
 	cmd = 'meld' $LOCAL $MERGED $REMOTE
 	trustExitCode = true
 [color]
 	ui = true
-[winUpdater]
-	recentlySeenVersion = 2.23.0.windows.1
 [gpg]
 	program = gpg
 [commit]

@@ -1,0 +1,1 @@
+/home/khongor/.bashrc##o.Linux
