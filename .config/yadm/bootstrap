@@ -9,6 +9,15 @@ system_type=$(uname -s)
 ZSH_ROOT="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$ZSH_ROOT/custom/plugins"
 
+if [ ! -d "$HOME/.vim/bundle" ]; then
+    # Installing pathogen
+    echo "- Installing pathogen..."
+    mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+else
+    echo "- Pathogen already installed"
+fi
+
 if [ "$system_type" = "Linux" ]; then
     # Install Oh-My-Zsh
     if [ ! -d "$ZSH_ROOT" ]; then
