@@ -101,14 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 alias wolmain="wakeonlan -p 9 -i 255.255.255.255 2c:4d:54:58:7b:5d"
 
-PROMPT="$fg[cyan]%}$USER@%{$fg[blue]%}%m ${PROMPT}"
-
-# screenfetch
 neofetch
-
 
