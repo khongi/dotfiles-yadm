@@ -6,7 +6,7 @@ printf "=== Starting bootstrap ===\n\n"
 
 system_type=$(uname -s)
 
-ZSH_ROOT=".oh-my-zsh"
+ZSH_ROOT="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$ZSH_ROOT/custom/plugins"
 
 if [ "$system_type" = "Linux" ]; then
