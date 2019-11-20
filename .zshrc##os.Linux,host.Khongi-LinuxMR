@@ -111,7 +111,7 @@ DEFAULT_USER=$USER
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting chucknorris
+  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting chucknorris docker docker-compose docker-machine
 )
 autoload -U compinit && compinit
 
@@ -157,7 +157,8 @@ export EDITOR=vim
 # export ANDROID_HOME=/home/khongor/Android/Sdk/
 
 # Add scripts to PATH
-export PATH=$HOME/.scripts:$PATH
+export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
+export PATH=$JAVA_HOME/bin:$HOME/.scripts:$PATH
 
 chuck_cow
 
