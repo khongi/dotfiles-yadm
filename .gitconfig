@@ -1,7 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Khongor Bayarsaikhan
-	email = b.khongi@gmail.com
+	email = khongor.bayarsaikhan@dod-software.com
+	signingKey = ""
 [includeIf "gitdir:~/Sources/Autsoft/"]
 	path = .gitconfig-autsoft
 [includeIf "gitdir:~/Sources.Autsoft/"]
@@ -11,6 +12,14 @@
 [includeIf "gitdir:~/Sources.Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Personal/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:S:/Sources.Edu/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:S:/Sources/Edu/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:S:/Sources.Personal/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:S:/Sources/Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Edu/"]
 	path = .gitconfig-personal
@@ -55,3 +64,11 @@
 	trustExitCode = true
 [color]
 	ui = true
+[winUpdater]
+	recentlySeenVersion = 2.23.0.windows.1
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false
