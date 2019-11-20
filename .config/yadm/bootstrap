@@ -63,6 +63,15 @@ if [ "$system_type" = "Linux" ]; then
     else
     	echo "- zsh-syntax-highlighting already installed"
     fi
+
+    # Install powerlevel9k
+    if [ ! -d "$ZSH_ROOT/custom/themes/powerlevel9k" ]; then
+        echo "- Installing powerlevel9k..."
+	git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_ROOT/custom/themes/powerlevel9k
+    else
+    	echo "- powerlevel9k already installed"
+    fi
+
 fi
 
 printf "\nDecrypting files...\n"
