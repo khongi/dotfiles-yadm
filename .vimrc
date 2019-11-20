@@ -1,6 +1,6 @@
 :let mapleader = ","
-" execute pathogen#infect()
-" execute pathogen#helptags()
+execute pathogen#infect()
+execute pathogen#helptags()
 
 set nocompatible
 filetype plugin indent on
