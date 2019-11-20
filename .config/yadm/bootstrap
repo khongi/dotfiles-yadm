@@ -4,18 +4,31 @@
 
 printf "=== Starting bootstrap ===\n\n"
 
+ORIGINAL_WORKING_DIR=$(pwd)
+cd $HOME
+
 system_type=$(uname -s)
 
 ZSH_ROOT="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$ZSH_ROOT/custom/plugins"
 
-if [ ! -d "$HOME/.vim/bundle" ]; then
+VIM_BUNDLE="$HOME/.vim/bundle"
+
+if [ ! -d "$VIM_BUNDLE" ]; then
     # Installing pathogen
     echo "- Installing pathogen..."
-    mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
+    mkdir -p $HOME/.vim/autoload $VIM_BUNDLE
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 else
     echo "- Pathogen already installed"
+fi
+
+if [ ! -d "$VIM_BUNDLE/nerdcommenter" ]; then
+    # Installing NERD Commenter
+    echo "- Installing NERD Commenter..."
+    git clone https://github.com/scrooloose/nerdcommenter.git $VIM_BUNDLE/nerdcommenter
+else
+    echo "- NERD Commenter already installed"
 fi
 
 if [ "$system_type" = "Linux" ]; then
@@ -57,5 +70,7 @@ yadm decrypt
 
 printf "\nUpdating the yadm repo origin URL\n"
 yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
+
+cd $ORIGINAL_WORKING_DIR
 
 printf "\n=== Finished bootstrap ===\n"
