@@ -103,5 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias wolmain="wakeonlan -p 9 -i 255.255.255.255 2c:4d:54:58:7b:5d"
 
+# Source common config
+source $HOME/custom/sources/zsh_common.sh
+
 neofetch
 

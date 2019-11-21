@@ -142,3 +142,6 @@ export EDITOR=vim
 # Add scripts to PATH
 #export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
 #export PATH=$JAVA_HOME/bin:$PATH
+
+# Source common config
+source $HOME/custom/sources/zsh_common.sh
