@@ -2,7 +2,7 @@
 [user]
 	name = Khongor Bayarsaikhan
 	email = b.khongi@gmail.com
-	
+
 [includeIf "gitdir:~/Sources.Personal/"]
 	path = .gitconfig-personal
 [includeIf "gitdir:~/Sources/Personal/"]
@@ -21,9 +21,9 @@
 [includeIf "gitdir:S:/Sources/Edu/"]
 	path = .gitconfig-personal
 
-[includeIf "gitdir:~/Sources.Autsoft/"]
+[includeIf "gitdir:~/Sources.AutSoft/"]
 	path = .gitconfig-autsoft
-[includeIf "gitdir:~/Sources/Autsoft/"]
+[includeIf "gitdir:~/Sources/AutSoft/"]
 	path = .gitconfig-autsoft
 [includeIf "gitdir:S:/Sources.AutSoft/"]
 	path = .gitconfig-autsoft
