@@ -34,7 +34,7 @@ fi
 
 if [ "$system_type" = "Linux" ]; then
     # Install Oh-My-Zsh
-    if [ ! -d "$ZSH_ROOT" ]; then
+    if [ ! -f "$ZSH_ROOT/oh-my-zsh.sh" ]; then
         echo "- Installing Oh My Zsh..."
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     else
