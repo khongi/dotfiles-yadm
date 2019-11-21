@@ -55,25 +55,25 @@ if [ "$system_type" = "Linux" ]; then
     fi
 
     # Install zsh-nvm
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-nvm" ]; then
+    if [ ! -d "$ZSH_PLUGINS/zsh-nvm" ]; then
         echo "- Installing zsh-nvm..."
-        git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM_PLUGINS/zsh-nvm
+        git clone https://github.com/lukechilds/zsh-nvm $ZSH_PLUGINS/zsh-nvm
     else
     	echo "- zsh-nvm already installed"
     fi
 
     # Install zsh-autosuggestions
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions" ]; then
+    if [ ! -d "$ZSH_PLUGINS/zsh-autosuggestions" ]; then
         echo "- Installing zsh-autosuggestions..."
-        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM_PLUGINS/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGINS/zsh-autosuggestions
     else
     	echo "- zsh-autosuggestions already installed"
     fi
 
     # Install zsh-syntax-highlighting
-    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ]; then
+    if [ ! -d "$ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
         echo "- Installing zsh-syntax-highlighting..."
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting
     else
     	echo "- zsh-syntax-highlighting already installed"
     fi
@@ -81,24 +81,24 @@ if [ "$system_type" = "Linux" ]; then
     # Install powerlevel9k
     if [ ! -d "$ZSH_ROOT/custom/themes/powerlevel9k" ]; then
         echo "- Installing powerlevel9k..."
-	git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_ROOT/custom/themes/powerlevel9k
+    	git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_ROOT/custom/themes/powerlevel9k
     else
     	echo "- powerlevel9k already installed"
     fi
 
 fi
 
-if [ -f "~/.config/yadm/files.gpg" ] then
-    if confirm "Decrypt files? (y/n)" then
-        printf "\nDecrypting files...\n"
-        yadm decrypt
-    fi
+if [ -f "$HOME/.config/yadm/files.gpg" ]; then
+    confirm "Decrypt files? [y/n]" && {
+        printf "\nDecrypting files...\n";
+        yadm decrypt;
+    }
 fi
 
-if confirm "Change yadm URL to SSH? (y/n)" then
-    printf "\nUpdating the yadm repo origin URL\n"
-    yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
-fi
+confirm "Change yadm URL to SSH? [y/n]" && {
+    printf "\nUpdating the yadm repo origin URL\n";
+    yadm remote set-url origin "thiosin:thiosin/dotfiles.git";
+}
 
 cd $ORIGINAL_WORKING_DIR
 
