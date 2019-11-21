@@ -129,6 +129,6 @@ export EDITOR=vim
 
 # Add scripts to PATH
 export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
-export PATH=$JAVA_HOME/bin:$HOME/.scripts:$PATH
+export PATH=$JAVA_HOME/bin:$HOME/custom/scripts:$PATH
 
 chuck_cow
