@@ -10,7 +10,8 @@ cd $HOME
 system_type=$(uname -s)
 
 ZSH_ROOT="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$ZSH_ROOT/custom/plugins"
+ZSH_CUSTOM="$ZSH_ROOT/custom"
+ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
 
@@ -41,25 +42,25 @@ if [ "$system_type" = "Linux" ]; then
     fi
 
     # Install zsh-nvm
-    if [ ! -d "$ZSH_CUSTOM/zsh-nvm" ]; then
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-nvm" ]; then
         echo "- Installing zsh-nvm..."
-        git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM/zsh-nvm
+        git clone https://github.com/lukechilds/zsh-nvm $ZSH_CUSTOM_PLUGINS/zsh-nvm
     else
     	echo "- zsh-nvm already installed"
     fi
 
     # Install zsh-autosuggestions
-    if [ ! -d "$ZSH_CUSTOM/zsh-autosuggestions" ]; then
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-autosuggestions" ]; then
         echo "- Installing zsh-autosuggestions..."
-        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM_PLUGINS/zsh-autosuggestions
     else
     	echo "- zsh-autosuggestions already installed"
     fi
 
     # Install zsh-syntax-highlighting
-    if [ ! -d "$ZSH_CUSTOM/zsh-syntax-highlighting" ]; then
+    if [ ! -d "$ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting" ]; then
         echo "- Installing zsh-syntax-highlighting..."
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/zsh-syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM_PLUGINS/zsh-syntax-highlighting
     else
     	echo "- zsh-syntax-highlighting already installed"
     fi
