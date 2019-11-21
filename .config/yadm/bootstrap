@@ -15,6 +15,19 @@ ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
 
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
 if [ ! -d "$VIM_BUNDLE" ]; then
     # Installing pathogen
     echo "- Installing pathogen..."
@@ -75,11 +88,17 @@ if [ "$system_type" = "Linux" ]; then
 
 fi
 
-printf "\nDecrypting files...\n"
-yadm decrypt
+if [ -f "~/.config/yadm/files.gpg" ] then
+    if confirm "Decrypt files? (y/n)" then
+        printf "\nDecrypting files...\n"
+        yadm decrypt
+    fi
+fi
 
-printf "\nUpdating the yadm repo origin URL\n"
-yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
+if confirm "Change yadm URL to SSH? (y/n)" then
+    printf "\nUpdating the yadm repo origin URL\n"
+    yadm remote set-url origin "thiosin:thiosin/dotfiles.git"
+fi
 
 cd $ORIGINAL_WORKING_DIR
 
