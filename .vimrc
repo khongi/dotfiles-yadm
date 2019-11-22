@@ -22,6 +22,8 @@ set statusline=%t%m%r%h%w%=\ %Y\ %l,%v\ %p%%\ [%L]
 
 noremap <Leader>y "+y
 noremap <Leader>p "+p
+noremap <Leader>P "+P
+noremap <Leader>d "+d
 
 
 " GUI options for when that's appropriate
