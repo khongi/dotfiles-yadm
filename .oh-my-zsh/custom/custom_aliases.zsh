@@ -11,6 +11,10 @@ alias cclip='xclip -selection clipboard'
 # List recent directories
 alias d='dirs -v | head -10'
 
+# Git log
+alias lg="git lg"
+alias lg2="git lg2"
+
 # ls
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
