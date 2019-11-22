@@ -17,8 +17,12 @@ set vb
 set linebreak
 set cursorline
 set mousehide
-:set laststatus=2
+set laststatus=2
 set statusline=%t%m%r%h%w%=\ %Y\ %l,%v\ %p%%\ [%L]
+
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+
 
 " GUI options for when that's appropriate
 set background=dark
