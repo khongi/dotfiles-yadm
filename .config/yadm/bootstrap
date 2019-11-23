@@ -9,9 +9,9 @@ cd $HOME
 
 system_type=$(uname -s)
 
-ZSH_ROOT="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$ZSH_ROOT/custom"
-ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
+OH_MY_ZSH_ROOT="$HOME/.oh-my-zsh"
+OH_MY_ZSH_CUSTOM="$OH_MY_ZSH_ROOT/custom"
+OH_MY_ZSH_PLUGINS="$OH_MY_ZSH_CUSTOM/plugins"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
 
@@ -47,7 +47,7 @@ fi
 
 if [ "$system_type" = "Linux" ]; then
     # Install Oh-My-Zsh
-    if [ ! -f "$ZSH_ROOT/oh-my-zsh.sh" ]; then
+    if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
         echo "- Installing Oh My Zsh..."
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     else
@@ -55,33 +55,33 @@ if [ "$system_type" = "Linux" ]; then
     fi
 
     # Install zsh-nvm
-    if [ ! -d "$ZSH_PLUGINS/zsh-nvm" ]; then
+    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-nvm" ]; then
         echo "- Installing zsh-nvm..."
-        git clone https://github.com/lukechilds/zsh-nvm $ZSH_PLUGINS/zsh-nvm
+        git clone https://github.com/lukechilds/zsh-nvm $OH_MY_ZSH_PLUGINS/zsh-nvm
     else
     	echo "- zsh-nvm already installed"
     fi
 
     # Install zsh-autosuggestions
-    if [ ! -d "$ZSH_PLUGINS/zsh-autosuggestions" ]; then
+    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-autosuggestions" ]; then
         echo "- Installing zsh-autosuggestions..."
-        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGINS/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-autosuggestions $OH_MY_ZSH_PLUGINS/zsh-autosuggestions
     else
     	echo "- zsh-autosuggestions already installed"
     fi
 
     # Install zsh-syntax-highlighting
-    if [ ! -d "$ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
+    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
         echo "- Installing zsh-syntax-highlighting..."
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting
     else
     	echo "- zsh-syntax-highlighting already installed"
     fi
 
     # Install powerlevel9k
-    if [ ! -d "$ZSH_ROOT/custom/themes/powerlevel9k" ]; then
+    if [ ! -d "$OH_MY_ZSH_CUSTOM/themes/powerlevel9k" ]; then
         echo "- Installing powerlevel9k..."
-    	git clone https://github.com/bhilburn/powerlevel9k.git $ZSH_ROOT/custom/themes/powerlevel9k
+    	git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_CUSTOM/themes/powerlevel9k
     else
     	echo "- powerlevel9k already installed"
     fi
