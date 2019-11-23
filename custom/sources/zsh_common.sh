@@ -2,13 +2,11 @@
 #
 # Khongor Bayarsaikhan - 2019
 
-#====== Env variables
-
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export TERM="xterm-256color"
-export EDITOR=vim
-
 #====== ZSH
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=$HOME/.cache/zsh/history
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
