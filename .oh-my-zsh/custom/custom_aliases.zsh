@@ -26,7 +26,9 @@ alias lS='ls -1FSsh'
 alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 
-alias zshrc='${=EDITOR} ${=ZDOTDIR}/.zshrc' # Quick access to the ~/.zshrc file
+alias zshrc='${=EDITOR} ${=ZDOTDIR}/.zshrc' # Quick access .zshrc
+alias zshcommon='${=EDITOR} ${=ZDOTDIR}/.zshcommon' # Quick access .zshcommon
+alias powerlevel9k='${=EDITOR} ${=ZDOTDIR}/.powerlevel9k' # Quick access .powerlevel9k
 
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '

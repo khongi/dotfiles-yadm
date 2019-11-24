@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Source common config
-source $HOME/custom/sources/zsh_common.sh
+source $ZDOTDIR/.zshcommon
 
 # Override common config
 
@@ -13,7 +13,7 @@ ZSH_THEME="af-magic"
 RPROMPT='%t'
 
 plugins=(
-  git zsh-autosuggestions zsh-syntax-highlighting
+  git vi-mode zsh-autosuggestions zsh-syntax-highlighting
 )
 
 autoload -U compinit && compinit
