@@ -1,11 +1,5 @@
 #!/bin/bash
 #
-# Additionally for LF file manager to work properly intall the following:
-# - pygmentize          : For syntax highlighting in files
-# - bastar and 7z       : Compressed file preview
-# - transmission-cli    : Bittorrent file preview
-#
-#
 # Khongor Bayarsaikhan - 2019
 
 printf "=== Starting bootstrap ===\n\n"
@@ -13,7 +7,8 @@ printf "=== Starting bootstrap ===\n\n"
 ORIGINAL_WORKING_DIR=$(pwd)
 cd $HOME
 
-system_type=$(uname -s)
+SYSTEM_TYPE=$(uname -s)
+DISTRO_TYPE=$(lsb_release -is)
 
 OH_MY_ZSH_ROOT="$HOME/.oh-my-zsh"
 OH_MY_ZSH_CUSTOM="$OH_MY_ZSH_ROOT/custom"
@@ -34,75 +29,199 @@ confirm() {
     esac
 }
 
+echo "-> Checking vim dependencies..."
 if [ ! -d "$VIM_BUNDLE" ]; then
     # Installing pathogen
-    echo "- Installing pathogen..."
+    echo "  -> Installing pathogen..."
     mkdir -p $HOME/.vim/autoload $VIM_BUNDLE
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 else
-    echo "- Pathogen already installed"
+    echo "  -> Pathogen already installed"
 fi
 
 if [ ! -d "$VIM_BUNDLE/nerdcommenter" ]; then
     # Installing NERD Commenter
-    echo "- Installing NERD Commenter..."
+    echo "  -> Installing NERD Commenter..."
     git clone https://github.com/scrooloose/nerdcommenter.git $VIM_BUNDLE/nerdcommenter
 else
-    echo "- NERD Commenter already installed"
+    echo "  -> NERD Commenter already installed"
 fi
 
-if [ "$system_type" = "Linux" ]; then
+if [ "$SYSTEM_TYPE" = "Linux" ]; then
+    if [ -f "/etc/arch-release" ]; then
+        echo "-> Arch Linux detected"
+        echo "-> Checking system dependencies..."
+
+        # Install yay
+        if ! command -v yay > /dev/null 2>&1; then
+            echo "  -> Installing yay for AUR..."
+            sudo pacman -S yay
+        else
+            echo "  -> yay already installed..."
+        fi
+
+        # Install zsh
+        if ! command -v zsh > /dev/null 2>&1; then
+            echo "  -> Installing zsh..."
+            sudo pacman -S zsh
+        else
+            echo "  -> zsh already installed..."
+        fi
+
+        # Install gnupg
+        if ! command -v gpg > /dev/null 2>&1; then
+            echo "  -> Installing gnupg for gpg..."
+            sudo pacman -S gnupg
+        else
+            echo "  -> gnupg already installed..."
+        fi
+
+        # Install transmission-cli
+        if ! command -v transmission-show > /dev/null 2>&1; then
+            echo "  -> Installing transmission-cli for transmission-show..."
+            sudo pacman -S transmission-cli
+        else
+            echo "  -> transmission-cli already installed..."
+        fi
+
+        # Install libarchive
+        if ! command -v bsdtar > /dev/null 2>&1; then
+            echo "  -> Installing libarchive for bsdtar..."
+            sudo pacman -S libarchive
+        else
+            echo "  -> libarchive already installed..."
+        fi
+
+        # Install p7zip
+        if ! command -v 7z > /dev/null 2>&1; then
+            echo "  -> Installing p7zip for 7z..."
+            sudo pacman -S p7zip
+        else
+            echo "  -> p7zip already installed..."
+        fi
+
+        # Install pygmentize
+        if ! command -v pygmentize > /dev/null 2>&1; then
+            echo "  -> Installing pygmentize from AUR..."
+            yay -S pygmentize
+        else
+            echo "  -> pygmentize already installed..."
+        fi
+    elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
+        echo "-> Debian detected"
+
+        # Install zsh
+        if ! command -v zsh > /dev/null 2>&1; then
+            echo "  -> Installing zsh..."
+            sudo apt-get install zsh
+        else
+            echo "  -> zsh already installed..."
+        fi
+
+        # Install gnupg
+        if ! command -v gpg > /dev/null 2>&1; then
+            echo "  -> Installing gnupg for gpg..."
+            sudo apt-get install gnupg
+        else
+            echo "  -> gnupg already installed..."
+        fi
+
+        # Install transmission-cli
+        if ! command -v transmission-show > /dev/null 2>&1; then
+            echo "  -> Installing transmission-cli for transmission-show..."
+            sudo add-apt-repository ppa:transmissionbt/ppa
+            sudo apt-get update
+            sudo apt-get install transmission-cli
+        else
+            echo "  -> transmission-cli already installed..."
+        fi
+
+        # Install libarchive
+        if ! command -v bsdtar > /dev/null 2>&1; then
+            echo "  -> Installing libarchive-tools for bsdtar..."
+            sudo apt-get install libarchive-tools
+        else
+            echo "  -> libarchive-tools already installed..."
+        fi
+
+        # Install p7zip
+        if ! command -v 7z > /dev/null 2>&1; then
+            echo "  -> Installing p7zip-full for 7z..."
+            sudo apt-get install p7zip-full
+        else
+            echo "  -> p7zip-full already installed..."
+        fi
+
+        # Install pip
+        if ! command -v pip > /dev/null 2>&1; then
+            echo "  -> Installing pip..."
+            sudo apt install python3-pip
+        else
+            echo "  -> python3-pip already installed..."
+        fi
+
+        # Install pygmentize
+        if ! command -v pygmentize > /dev/null 2>&1; then
+            echo "  -> Installing pygmentize from AUR..."
+            pip install Pygments
+        else
+            echo "  -> pygmentize already installed..."
+        fi
+    fi
+
+    echo "-> Checking zsh dependencies..."
+
     # Install Oh-My-Zsh
     if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
-        echo "- Installing Oh My Zsh..."
+        echo "  -> Installing Oh My Zsh..."
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     else
-    	echo "- Oh My Zsh already installed"
+    	echo "  -> Oh My Zsh already installed"
     fi
 
     # Install zsh-nvm
     if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-nvm" ]; then
-        echo "- Installing zsh-nvm..."
+        echo "  -> Installing zsh-nvm..."
         git clone https://github.com/lukechilds/zsh-nvm $OH_MY_ZSH_PLUGINS/zsh-nvm
     else
-    	echo "- zsh-nvm already installed"
+    	echo "  -> zsh-nvm already installed"
     fi
 
     # Install zsh-autosuggestions
     if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-autosuggestions" ]; then
-        echo "- Installing zsh-autosuggestions..."
+        echo "  -> Installing zsh-autosuggestions..."
         git clone https://github.com/zsh-users/zsh-autosuggestions $OH_MY_ZSH_PLUGINS/zsh-autosuggestions
     else
-    	echo "- zsh-autosuggestions already installed"
+    	echo "  -> zsh-autosuggestions already installed"
     fi
 
     # Install zsh-syntax-highlighting
     if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
-        echo "- Installing zsh-syntax-highlighting..."
+        echo "  -> Installing zsh-syntax-highlighting..."
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting
     else
-    	echo "- zsh-syntax-highlighting already installed"
+    	echo "  -> zsh-syntax-highlighting already installed"
     fi
 
     # Install powerlevel9k
     if [ ! -d "$OH_MY_ZSH_CUSTOM/themes/powerlevel9k" ]; then
-        echo "- Installing powerlevel9k..."
+        echo "  -> Installing powerlevel9k..."
     	git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_CUSTOM/themes/powerlevel9k
     else
-    	echo "- powerlevel9k already installed"
+    	echo "  -> powerlevel9k already installed"
     fi
 
 fi
 
 if [ -f "$HOME/.config/yadm/files.gpg" ]; then
-    confirm "Decrypt files? [y/n]" && {
-        printf "\nDecrypting files...\n";
+    confirm "-> Decrypt files? [y/n]" && {
+        printf "\n  -> Decrypting files...\n";
         yadm decrypt;
     }
 fi
 
-confirm "Change yadm URL to SSH? [y/n]" && {
-    printf "\nUpdating the yadm repo origin URL\n";
+confirm "-> Change yadm URL to SSH? [y/n]" && {
+    printf "\n  -> Updating the yadm repo origin URL\n";
     yadm remote set-url origin "thiosin:thiosin/dotfiles.git";
 }
 
