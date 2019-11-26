@@ -8,13 +8,14 @@ ORIGINAL_WORKING_DIR=$(pwd)
 cd $HOME
 
 SYSTEM_TYPE=$(uname -s)
-DISTRO_TYPE=$(lsb_release -is)
 
 OH_MY_ZSH_ROOT="$HOME/.oh-my-zsh"
 OH_MY_ZSH_CUSTOM="$OH_MY_ZSH_ROOT/custom"
 OH_MY_ZSH_PLUGINS="$OH_MY_ZSH_CUSTOM/plugins"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
+
+YADM_SSH_URL="thiosin:thiosin/dotfiles.git"
 
 confirm() {
     # call with a prompt string or use a default
@@ -220,10 +221,12 @@ if [ -f "$HOME/.config/yadm/files.gpg" ]; then
     }
 fi
 
-confirm "-> Change yadm URL to SSH? [y/n]" && {
-    printf "\n  -> Updating the yadm repo origin URL\n";
-    yadm remote set-url origin "thiosin:thiosin/dotfiles.git";
-}
+if [ ! "$(yadm remote get-url origin)" = "$YADM_SSH_URL" ]; then
+    confirm "-> Change yadm URL to SSH? [y/n]" && {
+        printf "\n  -> Updating the yadm repo origin URL\n";
+        yadm remote set-url origin "$YADM_SSH_URL";
+    }
+fi
 
 cd $ORIGINAL_WORKING_DIR
 
