@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+# Additionally for LF file manager to work properly intall the following:
+# - pygmentize          : For syntax highlighting in files
+# - bastar and 7z       : Compressed file preview
+# - transmission-cli    : Bittorrent file preview
+#
+#
 # Khongor Bayarsaikhan - 2019
 
 printf "=== Starting bootstrap ===\n\n"
