@@ -48,6 +48,14 @@ else
     echo "  -> NERD Commenter already installed"
 fi
 
+if [ ! -d "$VIM_BUNDLE/kotlin-vim" ]; then
+    # Installing kotlin-vim
+    echo "  -> Installing kotlin-vim"
+    git clone https://github.com/udalov/kotlin-vim.git $VIM_BUNDLE/kotlin-vim
+else
+    echo "  -> kotlin-vim already installed"
+fi
+
 if [ "$SYSTEM_TYPE" = "Linux" ]; then
     if [ -f "/etc/arch-release" ]; then
         echo "-> Arch Linux detected"
