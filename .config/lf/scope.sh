@@ -81,8 +81,6 @@ handle_mime() {
         text/* | */xml)
             # Syntax highlight
             if [ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]; then
-                # File is too large so just print it out with cat
-                cat ${FILE_PATH}
                 exit 2
             fi
             if [ "$( tput colors )" -ge 256 ]; then
@@ -94,7 +92,14 @@ handle_mime() {
             fi
             # highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
             #     --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}"
-            pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}"
+
+            # Try to highlight it with pygmentize
+            pygmentize \
+                -f "${pygmentize_format}" \
+                -O "style=${PYGMENTIZE_STYLE}" \
+                -- "${FILE_PATH}" ||
+            # In case above fails, just print it out with cat
+            cat ${FILE_PATH}
             exit 2;;
 
         # Image
