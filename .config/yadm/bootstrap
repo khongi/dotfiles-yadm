@@ -116,6 +116,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> pygmentize already installed..."
         fi
+
+        # Install unzip
+        if ! command -v unzip > /dev/null 2>&1; then
+            echo "  -> Installing unzip..."
+            sudo pacman -S unzip
+        else
+            echo "  -> unzip already installed..."
+        fi
     elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
         echo "-> Debian detected"
 
@@ -175,6 +183,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             pip install Pygments
         else
             echo "  -> pygmentize already installed..."
+        fi
+
+        # Install unzip
+        if ! command -v unzip > /dev/null 2>&1; then
+            echo "  -> Installing unzip..."
+            sudo apt-get install unzip
+        else
+            echo "  -> unzip already installed..."
         fi
     fi
 
