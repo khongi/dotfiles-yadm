@@ -1,7 +1,0 @@
-.ssh/config
-.ssh/Personal/id_rsa
-.ssh/Personal/id_rsa.pub
-.ssh/DoD/id_rsa
-.ssh/DoD/id_rsa.pub
-.ssh/Autsoft/id_rsa
-.ssh/Autsoft/id_rsa.pub
