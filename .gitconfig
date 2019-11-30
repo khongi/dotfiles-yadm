@@ -3,40 +3,16 @@
 	name = Khongor Bayarsaikhan
 	email = b.khongi@gmail.com
 
-[includeIf "gitdir:~/Sources.Personal/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:~/Sources/Personal/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources.Personal/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources/Personal/"]
+[includeIf "gitdir:*/*[pP]ersonal/"]
 	path = .gitconfig-personal
 
-[includeIf "gitdir:~/Sources.Edu/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:~/Sources/Edu/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources.Edu/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:S:/Sources/Edu/"]
+[includeIf "gitdir:*/*[eE][dD][uU]/"]
 	path = .gitconfig-personal
 
-[includeIf "gitdir:~/Sources.AutSoft/"]
-	path = .gitconfig-autsoft
-[includeIf "gitdir:~/Sources/AutSoft/"]
-	path = .gitconfig-autsoft
-[includeIf "gitdir:S:/Sources.AutSoft/"]
-	path = .gitconfig-autsoft
-[includeIf "gitdir:S:/Sources/AutSoft/"]
-	path = .gitconfig-autsoft
+[includeIf "gitdir:*/*[aA]ut[sS]oft/"]
+    path = .gitconfig-autsoft
 
-[includeIf "gitdir:~/Sources.DOD/"]
-	path = .gitconfig-dod
-[includeIf "gitdir:~/Sources/DOD/"]
-	path = .gitconfig-dod
-[includeIf "gitdir:S:/Sources.DOD/"]
-	path = .gitconfig-dod
-[includeIf "gitdir:S:/Sources/DOD/"]
+[includeIf "gitdir:*/*[dD][oO][dD]/"]
 	path = .gitconfig-dod
 
 [merge]
