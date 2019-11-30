@@ -15,6 +15,10 @@ alias d='dirs -v | head -10'
 alias lg="git lg"
 alias lg2="git lg2"
 
+# Transmission CLI
+alias tsm="transmission-remote"
+alias tsml="transmission-remote -l"
+
 # ls
 alias l='ls -lFh'     #size,show type,human readable
 alias la='ls -lAFh'   #long list,show almost all,show type,human readable
