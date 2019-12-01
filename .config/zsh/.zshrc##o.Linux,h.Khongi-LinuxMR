@@ -23,6 +23,6 @@ export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
 INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts
 
 export PATH=$INJECTED:$PATH
-export TRANSMISSION_HOME="/media/shared/Common/transmission-daemon"
+export TRANSMISSION_HOME="/media/shared/Common/transmission"
 
 chuck_cow
