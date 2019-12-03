@@ -7,7 +7,19 @@ source $ZDOTDIR/.powerlevel9k
 
 # Override common config
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-fontconfig'
+# POWERLEVEL9K_MODE='nerdfont-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+POWERLEVEL9K_DISABLE_RPROMPT=true
+
+POWERLEVEL9K_STATUS_OK_ICON=$'\uf164'
+POWERLEVEL9K_STATUS_ERROR_ICON=$'\uf165'
+POWERLEVEL9K_STATUS_ERROR_CR_ICON=$'\uf165'
+
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon date context dir vcs vi_mode status)
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode nvm date)
 
 plugins=(
   git vi-mode zsh-nvm zsh-autosuggestions zsh-syntax-highlighting chucknorris docker docker-compose
@@ -18,7 +30,8 @@ source $ZSH/oh-my-zsh.sh
 
 #====== Other configuration
 
-export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+# export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
 
 INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts
 

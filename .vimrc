@@ -10,6 +10,7 @@ set expandtab
 syntax on
 set encoding=utf-8
 set hlsearch
+set incsearch
 set number
 set relativenumber
 set wrap
