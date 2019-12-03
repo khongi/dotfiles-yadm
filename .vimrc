@@ -27,6 +27,9 @@ noremap <Leader>p "+p
 noremap <Leader>P "+P
 noremap <Leader>d "+d
 
+" Turn off search hightlight until next search
+noremap <Leader>l :noh<CR>
+
 " GUI options for when that's appropriate
 set background=dark
 " colorscheme evening
