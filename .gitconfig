@@ -10,7 +10,7 @@
 	path = .gitconfig-personal
 
 [includeIf "gitdir:*/*[aA]ut[sS]oft/"]
-    path = .gitconfig-autsoft
+	path = .gitconfig-autsoft
 
 [includeIf "gitdir:*/*[dD][oO][dD]/"]
 	path = .gitconfig-dod
