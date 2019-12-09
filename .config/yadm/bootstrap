@@ -15,7 +15,7 @@ OH_MY_ZSH_PLUGINS="$OH_MY_ZSH_CUSTOM/plugins"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
 
-YADM_SSH_URL="thiosin:thiosin/dotfiles.git"
+YADM_SSH_URL="git@github.com:khongi/dotfiles.git"
 
 confirm() {
     # call with a prompt string or use a default
