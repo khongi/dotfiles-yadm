@@ -28,8 +28,6 @@
 	longpaths = true
 	editor = vim
 	filemode = false
-[difftool "sourcetree"]
-	cmd = 'meld' $LOCAL $REMOTE
 [alias]
 	co = checkout
 	st = status
@@ -43,9 +41,6 @@
 	f = fetch
 	ca = commit -a
 	c = commit
-[mergetool "sourcetree"]
-	cmd = 'meld' $LOCAL $MERGED $REMOTE
-	trustExitCode = true
 [color]
 	ui = true
 [gpg]
