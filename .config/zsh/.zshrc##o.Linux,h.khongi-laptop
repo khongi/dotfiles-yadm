@@ -6,12 +6,20 @@ source $ZDOTDIR/.zshcommon
 source $ZDOTDIR/.powerlevel9k
 
 # Override common config
-ZSH_THEME="agnoster"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-fontconfig'
 
+POWERLEVEL9K_DISABLE_RPROMPT=true
+
+POWERLEVEL9K_STATUS_OK_ICON=$'\uf164'
+POWERLEVEL9K_STATUS_ERROR_ICON=$'\uf165'
+POWERLEVEL9K_STATUS_ERROR_CR_ICON=$'\uf165'
+
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
+
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting
+  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting docker docker-compose
 )
 
 autoload -U compinit && compinit
