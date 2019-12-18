@@ -71,6 +71,9 @@ handle_extension() {
         #     lynx -dump -- "${FILE_PATH}"
         #     elinks -dump "${FILE_PATH}"
         #     ;; # Continue with next handler on failure
+        json|conf)
+            cat "${FILE_PATH}"
+            exit 0;;
     esac
 }
 
