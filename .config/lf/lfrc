@@ -101,5 +101,5 @@ cmd zip ${{
 # Toggle hidden files with ctrl+h
 # map <bs> set hidden!
 
-set previewer ~/.config/lf/scope.sh
+# set previewer ~/.config/lf/scope.sh
 
