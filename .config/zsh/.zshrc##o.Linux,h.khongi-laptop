@@ -22,6 +22,10 @@ plugins=(
   git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting docker docker-compose
 )
 
+case $(tty) in
+  (/dev/tty[1-9]) ZSH_THEME='clean';;
+esac
+
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
