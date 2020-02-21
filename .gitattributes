@@ -1,0 +1,3 @@
+.conf linguist-language=ApacheConf
+.*  linguist-language=Shell
+yakuake linguist-language=Shell
