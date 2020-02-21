@@ -3,18 +3,6 @@
 	name = Khongor Bayarsaikhan
 	email = b.khongi@gmail.com
 
-[includeIf "gitdir:*/*[pP]ersonal/"]
-	path = .gitconfig-personal
-
-[includeIf "gitdir:*/*[eE][dD][uU]/"]
-	path = .gitconfig-personal
-
-[includeIf "gitdir:*/*[aA]ut[sS]oft/"]
-	path = .gitconfig-autsoft
-
-[includeIf "gitdir:*/*[dD][oO][dD]/"]
-	path = .gitconfig-dod
-
 [merge]
 	tool = vimdiff
 [push]
@@ -49,3 +37,13 @@
 	gpgSign = false
 [tag]
 	forceSignAnnotated = false
+
+[includeIf "gitdir:*/*[pP]ersonal/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:*/*[eE][dD][uU]/"]
+	path = .gitconfig-personal
+[includeIf "gitdir:*/*[aA]ut[sS]oft/"]
+	path = .gitconfig-autsoft
+[includeIf "gitdir:*/*[dD][oO][dD]/"]
+	path = .gitconfig-dod
+
