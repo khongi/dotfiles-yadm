@@ -24,7 +24,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon date context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode nvm date)
 
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting chucknorris
+  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting vi-mode
 )
 
 case $(tty) in
