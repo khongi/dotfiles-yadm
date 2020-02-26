@@ -97,10 +97,11 @@ handle_mime() {
             #     --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}"
 
             # Try to highlight it with pygmentize
-            pygmentize \
-                -f "${pygmentize_format}" \
-                -O "style=${PYGMENTIZE_STYLE}" \
-                -- "${FILE_PATH}" ||
+            # pygmentize \
+            #     -f "${pygmentize_format}" \
+            #     -O "style=${PYGMENTIZE_STYLE}" \
+            #     -- "${FILE_PATH}" ||
+            chroma --style=emacs ${FILE_PATH} ||
             # In case above fails, just print it out with cat
             cat ${FILE_PATH}
             exit 2;;
@@ -130,6 +131,5 @@ MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 handle_extension
 handle_mime "${MIMETYPE}"
 handle_fallback
-
 exit 1
 
