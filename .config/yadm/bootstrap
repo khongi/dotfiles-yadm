@@ -10,8 +10,9 @@ cd $HOME
 SYSTEM_TYPE=$(uname -s)
 
 OH_MY_ZSH_ROOT="$HOME/.oh-my-zsh"
-OH_MY_ZSH_CUSTOM="$OH_MY_ZSH_ROOT/custom"
-OH_MY_ZSH_PLUGINS="$OH_MY_ZSH_CUSTOM/plugins"
+ZSH_CUSTOM="$HOME/custom/zsh"
+OH_MY_ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
+OH_MY_ZSH_THEMES="$ZSH_CUSTOM/themes"
 
 VIM_BUNDLE="$HOME/.vim/bundle"
 
@@ -196,12 +197,15 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
 
     echo "-> Checking zsh dependencies..."
 
-    # Install Oh-My-Zsh
-    if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
-        echo "  -> Installing Oh My Zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # Oh-My-Zsh + Plugins + Themes
+
+    # Create directory structure
+    if [ ! -d "$OH_MY_ZSH_CUSTOM" ]; then
+        echo "  -> Creating zsh directory structure..."
+        mkdir -p $OH_MY_ZSH_PLUGINS
+        mkdir -p $OH_MY_ZSH_THEMES
     else
-    	echo "  -> Oh My Zsh already installed"
+        echo "  -> Oh-My-Zsh directory structure already created..."
     fi
 
     # Install zsh-nvm
@@ -229,12 +233,21 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     fi
 
     # Install powerlevel9k
-    if [ ! -d "$OH_MY_ZSH_CUSTOM/themes/powerlevel9k" ]; then
+    if [ ! -d "$OH_MY_ZSH_THEMES/powerlevel9k" ]; then
         echo "  -> Installing powerlevel9k..."
-    	git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_CUSTOM/themes/powerlevel9k
+    	git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_THEMES/powerlevel9k
     else
     	echo "  -> powerlevel9k already installed"
     fi
+
+    # Install Oh-My-Zsh with unattended mode
+    if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
+        echo "  -> Installing Oh My Zsh..."
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    else
+    	echo "  -> Oh My Zsh already installed"
+    fi
+
 
 fi
 
