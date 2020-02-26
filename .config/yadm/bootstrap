@@ -118,6 +118,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             echo "  -> pygmentize already installed..."
         fi
 
+        # Install chroma
+        if ! command -v chroma > /dev/null 2>&1; then
+            echo "  -> Installing chroma..."
+            yay -S go-chroma
+        else
+            echo "  -> unzip already installed..."
+        fi
+
         # Install unzip
         if ! command -v unzip > /dev/null 2>&1; then
             echo "  -> Installing unzip..."
@@ -185,6 +193,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> pygmentize already installed..."
         fi
+
+        # Install chroma - TODO
+        # if ! command -v chroma > /dev/null 2>&1; then
+        #     echo "  -> Installing chroma..."
+        #     yay -S go-chroma
+        # else
+        #     echo "  -> unzip already installed..."
+        # fi
 
         # Install unzip
         if ! command -v unzip > /dev/null 2>&1; then
