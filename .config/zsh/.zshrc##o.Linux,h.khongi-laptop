@@ -36,6 +36,8 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 
-INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin
+VIM_LIVE_LATEX_PREVIEW="$HOME/.vim/bundle/vim-live-latex-preview/bin"
+
+INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin:$VIM_LIVE_LATEX_PREVIEW
 
 export PATH=$INJECTED:$PATH

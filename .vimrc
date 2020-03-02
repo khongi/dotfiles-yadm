@@ -1,4 +1,5 @@
 :let mapleader = ","
+:let maplocalleader = "\\"
 execute pathogen#infect()
 execute pathogen#helptags()
 
