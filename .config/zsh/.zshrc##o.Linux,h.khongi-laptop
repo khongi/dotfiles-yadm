@@ -34,6 +34,8 @@ source $ZSH/oh-my-zsh.sh
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 # export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
 
-INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts
+export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
+
+INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin
 
 export PATH=$INJECTED:$PATH
