@@ -57,6 +57,14 @@ else
     echo "  -> kotlin-vim already installed"
 fi
 
+if [ ! -d "$VIM_BUNDLE/vim-live-latex-preview" ]; then
+    # Installing vim-live-latex-preview
+    echo "  -> Installing vim-live-latex-preview"
+    git clone https://github.com/ying17zi/vim-live-latex-preview.git $VIM_BUNDLE/vim-live-latex-preview
+else
+    echo "  -> vim-live-latex-preview already installed"
+fi
+
 if [ "$SYSTEM_TYPE" = "Linux" ]; then
     if [ -f "/etc/arch-release" ]; then
         echo "-> Arch Linux detected"
