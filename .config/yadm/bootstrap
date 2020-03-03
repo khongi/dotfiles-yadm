@@ -131,7 +131,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             echo "  -> Installing chroma..."
             yay -S go-chroma
         else
-            echo "  -> unzip already installed..."
+            echo "  -> chroma already installed..."
         fi
 
         # Install unzip
@@ -140,6 +140,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             sudo pacman -S unzip
         else
             echo "  -> unzip already installed..."
+        fi
+
+        # Install mupdf
+        if ! command -v mupdf > /dev/null 2>&1; then
+            echo "  -> Installing mupdf..."
+            sudo pacman -S mupdf
+        else
+            echo "  -> mupdf already installed..."
         fi
     elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
         echo "-> Debian detected"
@@ -207,7 +215,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         #     echo "  -> Installing chroma..."
         #     yay -S go-chroma
         # else
-        #     echo "  -> unzip already installed..."
+        #     echo "  -> chroma already installed..."
         # fi
 
         # Install unzip
@@ -216,6 +224,16 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             sudo apt-get install unzip
         else
             echo "  -> unzip already installed..."
+        fi
+
+        # Install mupdf
+        if ! command -v mupdf > /dev/null 2>&1; then
+            echo "  -> Installing mupdf..."
+            sudo add-apt-repository ppa:ubuntuhandbook1/apps
+            sudo apt-get update
+            sudo apt-get install mupdf mupdf-tools
+        else
+            echo "  -> mupdf already installed..."
         fi
     fi
 
@@ -271,7 +289,6 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     else
     	echo "  -> Oh My Zsh already installed"
     fi
-
 
 fi
 
