@@ -36,6 +36,9 @@ source $ZSH/oh-my-zsh.sh
 
 #====== Other configuration
 
+# autojump
+source /usr/share/autojump/autojump.zsh
+
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 # export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
 

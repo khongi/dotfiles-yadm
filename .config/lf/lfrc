@@ -107,7 +107,7 @@ cmd zip ${{
 set previewer ~/.config/lf/preview.sh
 
 cmd mkdir %mkdir "$@"
-map a push :mkdir<space>
+map m push :mkdir<space>
 
 cmd paste &{{
     load=$(lf -remote 'load')
@@ -125,5 +125,22 @@ cmd paste &{{
     lf -remote 'send load'
     lf -remote 'send clear'
 }}
+
+map f $vi $(fzf)
+
+cmd fzf_jump ${{
+   res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+   if [ -f "$res" ]; then
+     cmd="select"
+   elif [ -d "$res" ]; then
+     cmd="cd"
+   fi
+lf -remote "send $id $cmd \"$res\""
+}}
+
+map <c-f> :fzf_jump
+
+cmd aj %lf -remote "send $id cd '$(autojump $1)'"
+map a push :aj<space>
 
 set hidden!
