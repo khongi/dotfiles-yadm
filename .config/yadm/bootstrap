@@ -157,6 +157,13 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> fzf already installed..."
         fi
+        # Install autojump
+        if ! command -v autojump > /dev/null 2>&1; then
+            echo "  -> Installing autojump..."
+            yay -S autojump
+        else
+            echo "  -> autojump already installed..."
+        fi
     elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
         echo "-> Debian detected"
 
@@ -250,6 +257,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         #
         # else
         #     echo "  -> fzf already installed..."
+        # fi
+
+        # Install autojump - TODO
+        # if ! command -v autojump > /dev/null 2>&1; then
+        #     echo "  -> Installing autojump..."
+        #
+        # else
+        #     echo "  -> autojump already installed..."
         # fi
     fi
 
