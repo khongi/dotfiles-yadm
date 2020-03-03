@@ -167,7 +167,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         fi
 
         # Install trash-cli
-        if ! command -v trash-cli > /dev/null 2>&1; then
+        if ! command -v trash-put > /dev/null 2>&1; then
             echo "  -> Installing trash-cli..."
             yay -S trash-cli
         else
