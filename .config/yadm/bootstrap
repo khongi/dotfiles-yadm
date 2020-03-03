@@ -157,12 +157,21 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> fzf already installed..."
         fi
+
         # Install autojump
         if ! command -v autojump > /dev/null 2>&1; then
             echo "  -> Installing autojump..."
             yay -S autojump
         else
             echo "  -> autojump already installed..."
+        fi
+
+        # Install trash-cli
+        if ! command -v trash-cli > /dev/null 2>&1; then
+            echo "  -> Installing trash-cli..."
+            yay -S trash-cli
+        else
+            echo "  -> trash-cli already installed..."
         fi
     elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
         echo "-> Debian detected"
@@ -265,6 +274,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         #
         # else
         #     echo "  -> autojump already installed..."
+        # fi
+
+        # Install trash-cli - TODO
+        # if ! command -v trash-cli > /dev/null 2>&1; then
+        #     echo "  -> Installing trash-cli..."
+        #
+        # else
+        #     echo "  -> trash-cli already installed..."
         # fi
     fi
 
