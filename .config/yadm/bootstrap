@@ -149,6 +149,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> mupdf already installed..."
         fi
+
+        # Install fzf
+        if ! command -v fzf > /dev/null 2>&1; then
+            echo "  -> Installing fzf..."
+            sudo pacman -S fzf
+        else
+            echo "  -> fzf already installed..."
+        fi
     elif [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]; then
         echo "-> Debian detected"
 
@@ -235,6 +243,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         else
             echo "  -> mupdf already installed..."
         fi
+
+        # Install fzf - TODO
+        # if ! command -v fzf > /dev/null 2>&1; then
+        #     echo "  -> Installing fzf..."
+        #
+        # else
+        #     echo "  -> fzf already installed..."
+        # fi
     fi
 
     echo "-> Checking zsh dependencies..."
