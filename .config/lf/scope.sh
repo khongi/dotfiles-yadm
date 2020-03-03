@@ -46,12 +46,12 @@ handle_extension() {
             exit 1;;
 
         # PDF
-        # pdf)
-        #     # Preview as text conversion
-        #     pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" -
-        #     mutool draw -F txt -i -- "${FILE_PATH}" 1-10
-        #     exiftool "${FILE_PATH}"
-        #     exit 1;;
+        pdf)
+            # Preview as text conversion
+            pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" -
+            mutool draw -F txt -i -- "${FILE_PATH}" 1-10
+            exiftool "${FILE_PATH}"
+            exit 1;;
 
         # BitTorrent
         torrent)
@@ -71,10 +71,34 @@ handle_extension() {
         #     lynx -dump -- "${FILE_PATH}"
         #     elinks -dump "${FILE_PATH}"
         #     ;; # Continue with next handler on failure
-        json|conf)
-            cat "${FILE_PATH}"
+        json|conf|csv|txt)
+            syntax_highlight
             exit 0;;
     esac
+}
+
+syntax_highlight() {
+    if [ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]; then
+        exit 2
+    fi
+    if [ "$( tput colors )" -ge 256 ]; then
+        local pygmentize_format='terminal256'
+        local highlight_format='xterm256'
+    else
+        local pygmentize_format='terminal'
+        local highlight_format='ansi'
+    fi
+    # highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
+    #     --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}"
+
+    # Try to highlight it with pygmentize
+    # pygmentize \
+    #     -f "${pygmentize_format}" \
+    #     -O "style=${PYGMENTIZE_STYLE}" \
+    #     -- "${FILE_PATH}" ||
+    chroma --style=emacs ${FILE_PATH} ||
+    # In case above fails, just print it out with cat
+    cat ${FILE_PATH}
 }
 
 handle_mime() {
@@ -83,27 +107,7 @@ handle_mime() {
         # Text
         text/* | */xml)
             # Syntax highlight
-            if [ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]; then
-                exit 2
-            fi
-            if [ "$( tput colors )" -ge 256 ]; then
-                local pygmentize_format='terminal256'
-                local highlight_format='xterm256'
-            else
-                local pygmentize_format='terminal'
-                local highlight_format='ansi'
-            fi
-            # highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
-            #     --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}"
-
-            # Try to highlight it with pygmentize
-            # pygmentize \
-            #     -f "${pygmentize_format}" \
-            #     -O "style=${PYGMENTIZE_STYLE}" \
-            #     -- "${FILE_PATH}" ||
-            chroma --style=emacs ${FILE_PATH} ||
-            # In case above fails, just print it out with cat
-            cat ${FILE_PATH}
+            syntax_highlight
             exit 2;;
 
         # Image
@@ -125,7 +129,6 @@ handle_fallback() {
     echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}"
     exit 1
 }
-
 
 MIMETYPE="$( file --dereference --brief --mime-type -- "${FILE_PATH}" )"
 handle_extension
