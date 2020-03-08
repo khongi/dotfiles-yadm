@@ -95,12 +95,12 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         fi
 
         # Install transmission-cli
-        if ! command -v transmission-show > /dev/null 2>&1; then
-            echo "  -> Installing transmission-cli for transmission-show..."
-            sudo pacman -S transmission-cli
-        else
-            echo "  -> transmission-cli already installed..."
-        fi
+        # if ! command -v transmission-show > /dev/null 2>&1; then
+        #     echo "  -> Installing transmission-cli for transmission-show..."
+        #     sudo pacman -S transmission-cli
+        # else
+        #     echo "  -> transmission-cli already installed..."
+        # fi
 
         # Install libarchive
         if ! command -v bsdtar > /dev/null 2>&1; then
@@ -193,14 +193,14 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         fi
 
         # Install transmission-cli
-        if ! command -v transmission-show > /dev/null 2>&1; then
-            echo "  -> Installing transmission-cli for transmission-show..."
-            sudo add-apt-repository ppa:transmissionbt/ppa
-            sudo apt-get update
-            sudo apt-get install transmission-cli
-        else
-            echo "  -> transmission-cli already installed..."
-        fi
+        # if ! command -v transmission-show > /dev/null 2>&1; then
+        #     echo "  -> Installing transmission-cli for transmission-show..."
+        #     sudo add-apt-repository ppa:transmissionbt/ppa
+        #     sudo apt-get update
+        #     sudo apt-get install transmission-cli
+        # else
+        #     echo "  -> transmission-cli already installed..."
+        # fi
 
         # Install libarchive
         if ! command -v bsdtar > /dev/null 2>&1; then
