@@ -6,9 +6,9 @@ source $ZDOTDIR/.zshcommon
 source $ZDOTDIR/.powerlevel9k
 
 # Override common config
-# ZSH_THEME="agnoster"
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-fontconfig'
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='default'
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
 
@@ -19,7 +19,7 @@ POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting vi-mode alias-finder colored-man-pages colorize
+  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting vi-mode alias-finder colored-man-pages colorize autojump
 )
 
 case $(tty) in
@@ -39,8 +39,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 
+export GOPATH="$HOME/go"
+
 VIM_LIVE_LATEX_PREVIEW="$HOME/.vim/bundle/vim-live-latex-preview/bin"
 
-INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin:$VIM_LIVE_LATEX_PREVIEW
+INJECTED=$JAVA_HOME/bin:$GOPATH/bin:$HOME/custom/scripts:$GEM_HOME/bin:$VIM_LIVE_LATEX_PREVIEW
 
 export PATH=$INJECTED:$PATH
