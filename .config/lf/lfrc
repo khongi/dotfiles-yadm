@@ -105,7 +105,7 @@ cmd zip ${{
 # Toggle hidden files with ctrl+h
 # map <bs> set hidden!
 
-set previewer ~/.config/lf/preview.sh
+# set previewer ~/.config/lf/preview.sh
 
 cmd mkdir %mkdir "$@"
 map m push :mkdir<space>
