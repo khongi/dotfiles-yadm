@@ -19,7 +19,15 @@ POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 
 plugins=(
-  git zsh-nvm zsh-autosuggestions zsh-syntax-highlighting vi-mode alias-finder colored-man-pages colorize autojump
+  git
+  zsh-nvm
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  vi-mode
+  alias-finder
+  colored-man-pages
+  colorize
+  autojump
 )
 
 case $(tty) in
@@ -31,14 +39,9 @@ source $ZSH/oh-my-zsh.sh
 
 #====== Other configuration
 
-# autojump
-source /usr/share/autojump/autojump.zsh
-
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 # export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
-
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
-
 export GOPATH="$HOME/go"
 
 VIM_LIVE_LATEX_PREVIEW="$HOME/.vim/bundle/vim-live-latex-preview/bin"
