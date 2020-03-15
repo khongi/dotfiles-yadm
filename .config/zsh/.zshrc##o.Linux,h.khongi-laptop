@@ -6,9 +6,9 @@ source $ZDOTDIR/.zshcommon
 source $ZDOTDIR/.powerlevel9k
 
 # Override common config
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='default'
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
 
