@@ -30,6 +30,7 @@ plugins=(
   zsh-syntax-highlighting
   vi-mode
   docker-compose
+  systemd
 )
 
 case $(tty) in
