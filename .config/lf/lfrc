@@ -110,22 +110,22 @@ cmd zip ${{
 cmd mkdir %mkdir "$@"
 map m push :mkdir<space>
 
-cmd paste &{{
-    load=$(lf -remote 'load')
-    mode=$(echo "$load" | sed -n '1p')
-    list=$(echo "$load" | sed '1d')
-    if [ $mode = 'copy' ]; then
-        rsync -av --ignore-existing --progress $list . \
-        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
-        | while read line; do
-            lf -remote "send $id echo $line"
-        done
-    elif [ $mode = 'move' ]; then
-        mv -n $list .
-    fi
-    lf -remote 'send load'
-    lf -remote 'send clear'
-}}
+# cmd paste &{{
+#     load=$(lf -remote 'load')
+#     mode=$(echo "$load" | sed -n '1p')
+#     list=$(echo "$load" | sed '1d')
+#     if [ $mode = 'copy' ]; then
+#         rsync -av --ignore-existing --progress $list . \
+#         | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
+#         | while read line; do
+#             lf -remote "send $id echo $line"
+#         done
+#     elif [ $mode = 'move' ]; then
+#         mv -n $list .
+#     fi
+#     lf -remote 'send load'
+#     lf -remote 'send clear'
+# }}
 
 map f $vi $(fzf)
 
