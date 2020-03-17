@@ -13,7 +13,12 @@ ZSH_THEME="af-magic"
 RPROMPT='%t'
 
 plugins=(
-  git vi-mode zsh-autosuggestions zsh-syntax-highlighting
+  git
+  vi-mode
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  autojump
+  docker-compose
 )
 
 case $(tty) in
