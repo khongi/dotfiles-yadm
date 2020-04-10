@@ -23,7 +23,7 @@ plugins=(
   zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting
-  vi-mode
+  # vi-mode
   alias-finder
   colored-man-pages
   colorize
