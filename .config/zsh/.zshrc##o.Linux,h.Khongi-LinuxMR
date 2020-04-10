@@ -28,7 +28,6 @@ plugins=(
   zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting
-  vi-mode
   docker-compose
   systemd
 )
