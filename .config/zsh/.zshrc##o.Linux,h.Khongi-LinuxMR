@@ -30,6 +30,7 @@ plugins=(
   zsh-syntax-highlighting
   docker-compose
   systemd
+  ng
 )
 
 case $(tty) in
@@ -52,6 +53,5 @@ export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin
 
 export PATH=$INJECTED:$PATH
-export TRANSMISSION_HOME="/media/shared/Common/transmission"
 
 # chuck_cow
