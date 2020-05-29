@@ -30,7 +30,6 @@ plugins=(
   zsh-syntax-highlighting
   docker-compose
   systemd
-  ng
 )
 
 case $(tty) in
@@ -41,6 +40,9 @@ autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 #====== Other configuration
+
+alias 1monitor='xrandr --output HDMI-0 --mode 3840x2160 --rate 60.00 --primary --output DP-2 --off'
+alias 2monitor='xrandr --output HDMI-0 --mode 3840x2160 --rate 60.00 --output DP-2 --mode 2560x1440 --rate 144.00 --primary --right-of HDMI-0'
 
 # autojump
 source /usr/share/autojump/autojump.zsh
