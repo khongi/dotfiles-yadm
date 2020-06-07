@@ -164,7 +164,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     fi
 
     # Install pip
-    if ! command -v pip >/dev/null 2>&1; then
+    if ! command -v pip3 >/dev/null 2>&1; then
         confirm "  -> Install pip? [y/n]" && {
             echo "  -> Installing pip..."
             if [ "$isDebian" ]; then
@@ -182,7 +182,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         confirm "  -> Install pygmentize? [y/n]" && {
             echo "  -> Installing pygmentize..."
             if [ "$isDebian" ]; then
-                pip install Pygments
+                pip3 install Pygments
             elif [ "$isArch" ]; then
                 yay -S pygmentize
             fi

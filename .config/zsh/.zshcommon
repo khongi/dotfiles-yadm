@@ -91,3 +91,5 @@ lfcd () {
     fi
 }
 bindkey -s '^o' 'lfcd\n'
+
+export PATH="$HOME/.local/bin":$PATH
