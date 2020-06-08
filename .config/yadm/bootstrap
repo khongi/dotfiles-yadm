@@ -41,7 +41,11 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     echo "-> Checking system dependencies..."
 
     isDebian=$(grep -Ei 'debian|buntu|mint' /etc/*release)
-    isArch=$([ -f "/etc/arch-release" ])
+    
+    isArch=false
+    if test -f "/etc/arch-release2"; then
+        isArch=true
+    fi
 
     # Install yay
     if ! command -v yay >/dev/null 2>&1; then
@@ -88,7 +92,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             if [ "$isDebian" ]; then
                 sudo apt install golang-go
             elif [ "$isArch" ]; then
-                sudo pacman -S golang
+                sudo pacman -S go
             fi
         }
     else
