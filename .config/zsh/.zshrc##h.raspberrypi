@@ -19,6 +19,7 @@ plugins=(
   zsh-syntax-highlighting
   autojump
   docker-compose
+  systemd
 )
 
 case $(tty) in
@@ -34,6 +35,7 @@ INJECTED=$HOME/custom/scripts
 export PATH=$INJECTED:$PATH
 
 alias wolmain="wakeonlan -p 9 -i 255.255.255.255 2c:4d:54:58:7b:5d"
+alias wolgt70="wakeonlan -p 9 -i 255.255.255.255 8c:89:a5:0c:02:5d"
 
 neofetch
 
