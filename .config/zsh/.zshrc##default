@@ -21,6 +21,6 @@ source $ZSH/oh-my-zsh.sh
 
 #====== Other configuration
 
-INJECTED=$HOME/custom/scripts
+INJECTED=$HOME/custom/scripts:$HOME/.local/bin:$HOME/go/bin
 
 export PATH=$INJECTED:$PATH
