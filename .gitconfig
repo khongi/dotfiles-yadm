@@ -30,6 +30,7 @@
     p = pull
 	ca = commit -a
 	c = commit
+    diff = diff --color=always
 [color]
 	ui = true
 [gpg]
