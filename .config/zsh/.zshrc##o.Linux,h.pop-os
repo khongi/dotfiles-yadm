@@ -76,7 +76,12 @@ bindkey -v '^?' backward-delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Run xmodmaprc
+xmodmap ~/.xmodmaprc
+
 #====== Other configuration
+
+eval $(thefuck --alias)
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 # export JAVA_HOME=/usr/lib/jvm/jdk-jetbrains
