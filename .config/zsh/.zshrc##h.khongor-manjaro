@@ -6,7 +6,8 @@ source $ZDOTDIR/.zshcommon
 source $ZDOTDIR/.powerlevel9k
 
 # Override common config
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="agnoster"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_MODE='default'
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_MODE='nerdfont-fontconfig'
