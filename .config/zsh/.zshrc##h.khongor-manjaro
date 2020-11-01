@@ -92,7 +92,9 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 
-INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin
+export ANDROID_HOME=$HOME/Android/Sdk
+
+INJECTED=$JAVA_HOME/bin:$HOME/custom/scripts:$GEM_HOME/bin:$ANDROID_HOME/platform-tools
 
 export PATH=$INJECTED:$PATH
 
