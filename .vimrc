@@ -22,6 +22,19 @@ set mousehide
 set laststatus=2
 set statusline=%t%m%r%h%w%=\ %Y\ %l,%v\ %p%%\ [%L]
 
+" No line highlight on Insert mode
+:autocmd InsertEnter,InsertLeave * set cul!
+
+" Insert mode different cursor
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Optionally reset the cursor on start:
+augroup myCmds
+au!
+autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
+
 " Cut, Copy, Paste with + registry
 noremap <Leader>y "+y
 noremap <Leader>p "+p
