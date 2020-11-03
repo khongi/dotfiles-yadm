@@ -31,6 +31,8 @@
     ca = commit -a
     c = commit
     diff = diff --color=always
+[pull]
+	rebase = false
 [color]
     ui = true
 [gpg]
