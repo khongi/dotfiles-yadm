@@ -57,7 +57,9 @@ xmodmap ~/.xmodmaprc
 
 eval $(thefuck --alias)
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+STUDIO_JRE=$(grep studio.sh $HOME/custom/scripts/studio | awk '{print $1}' | sed 's/"//g' | sed 's/\/bin\/studio.sh/\/jre/')
+
+export JAVA_HOME=$STUDIO_JRE
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 export GOPATH="$HOME/go"
 export ANDROID_HOME=$HOME/Android/Sdk
