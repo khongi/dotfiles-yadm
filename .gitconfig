@@ -17,20 +17,19 @@
     filemode = false
     autocrlf = input
 [alias]
+    c = commit
+    ca = commit -a
     co = checkout
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    diff = diff --color=always
     s = status -s
     rso = remote show origin
     rgo = remote get-url origin
     rpo = remote prune origin
-    last = log -1 HEAD
     f = fetch
     fod = fetch origin development:development
     p = pull
-    ca = commit -a
-    c = commit
-    diff = diff --color=always
+    ps = push
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 [pull]
 	rebase = false
 [color]
