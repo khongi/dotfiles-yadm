@@ -2,12 +2,6 @@
 #
 # Khongor Bayarsaikhan - 2020
 
-# confirm "  -> Install TODO? [y/n]" && {
-#     if [ "$isDebian" ]; then
-#     elif [ "$isArch" ]; then
-#     fi
-# }
-
 printf "=== Starting bootstrap ===\n\n"
 
 ORIGINAL_WORKING_DIR=$(pwd)
@@ -41,7 +35,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     echo "-> Checking system dependencies..."
 
     isDebian=$(grep -Ei 'debian|buntu|mint' /etc/*release)
-    
+
     isArch=false
     if test -f "/etc/arch-release2"; then
         isArch=true
@@ -123,50 +117,6 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         echo "  -> gnupg already installed..."
     fi
 
-    # Install transmission-cli
-    if ! command -v transmission-show >/dev/null 2>&1; then
-        confirm "  -> Install transmission-show? [y/n]" && {
-            echo "  -> Installing transmission-cli for transmission-show..."
-            if [ "$isDebian" ]; then
-                sudo add-apt-repository ppa:transmissionbt/ppa
-                sudo apt update
-                sudo apt install transmission-cli
-            elif [ "$isArch" ]; then
-                sudo pacman -S transmission-cli
-            fi
-        }
-    else
-        echo "  -> transmission-cli already installed..."
-    fi
-
-    # Install libarchive
-    if ! command -v bsdtar >/dev/null 2>&1; then
-        confirm "  -> Install libarchive? [y/n]" && {
-            echo "  -> Installing libarchive for bsdtar..."
-            if [ "$isDebian" ]; then
-                sudo apt install libarchive-tools
-            elif [ "$isArch" ]; then
-                sudo pacman -S libarchive
-            fi
-        }
-    else
-        echo "  -> libarchive already installed..."
-    fi
-
-    # Install p7zip
-    if ! command -v 7z >/dev/null 2>&1; then
-        confirm "  -> Install p7zip? [y/n]" && {
-            echo "  -> Installing p7zip for 7z..."
-            if [ "$isDebian" ]; then
-                sudo apt install p7zip-full
-            elif [ "$isArch" ]; then
-                sudo pacman -S p7zip
-            fi
-        }
-    else
-        echo "  -> p7zip already installed..."
-    fi
-
     # Install pip
     if ! command -v pip3 >/dev/null 2>&1; then
         confirm "  -> Install pip? [y/n]" && {
@@ -179,78 +129,6 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
         }
     else
         echo "  -> python3-pip already installed..."
-    fi
-
-    # Install pygmentize
-    if ! command -v pygmentize >/dev/null 2>&1; then
-        confirm "  -> Install pygmentize? [y/n]" && {
-            echo "  -> Installing pygmentize..."
-            if [ "$isDebian" ]; then
-                pip3 install Pygments
-            elif [ "$isArch" ]; then
-                yay -S pygmentize
-            fi
-        }
-    else
-        echo "  -> pygmentize already installed..."
-    fi
-
-    # Install chroma
-    if ! command -v chroma >/dev/null 2>&1; then
-        confirm "  -> Install chroma? [y/n]" && {
-            echo "  -> Installing chroma..."
-            if [ "$isDebian" ]; then
-                sudo apt install chroma
-            elif [ "$isArch" ]; then
-                yay -S go-chroma
-            fi
-        }
-    else
-        echo "  -> chroma already installed..."
-    fi
-
-    # Install unzip
-    if ! command -v unzip >/dev/null 2>&1; then
-        confirm "  -> Install unzip? [y/n]" && {
-            echo "  -> Installing unzip..."
-            if [ "$isDebian" ]; then
-                sudo apt install unzip
-            elif [ "$isArch" ]; then
-                sudo pacman -S unzip
-            fi
-        }
-    else
-        echo "  -> unzip already installed..."
-    fi
-
-    # Install mupdf
-    if ! command -v mupdf >/dev/null 2>&1; then
-        confirm "  -> Install mupdf? [y/n]" && {
-            echo "  -> Installing mupdf..."
-            if [ "$isDebian" ]; then
-                sudo add-apt-repository ppa:ubuntuhandbook1/apps
-                sudo apt update
-                sudo apt install mupdf mupdf-tools
-            elif [ "$isArch" ]; then
-                sudo pacman -S mupdf
-            fi
-        }
-    else
-        echo "  -> mupdf already installed..."
-    fi
-
-    # Install fzf
-    if ! command -v fzf >/dev/null 2>&1; then
-        confirm "  -> Install fzf? [y/n]" && {
-            echo "  -> Installing fzf..."
-            if [ "$isDebian" ]; then
-                sudo apt install fzf
-            elif [ "$isArch" ]; then
-                sudo pacman -S fzf
-            fi
-        }
-    else
-        echo "  -> fzf already installed..."
     fi
 
     # Install autojump
@@ -285,54 +163,60 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
 
     # Oh-My-Zsh + Plugins + Themes
 
-    # Create directory structure
-    if [ ! -d "$OH_MY_ZSH_CUSTOM" ]; then
-        echo "  -> Creating zsh directory structure..."
-        mkdir -p $OH_MY_ZSH_PLUGINS
-        mkdir -p $OH_MY_ZSH_THEMES
-    else
-        echo "  -> Oh-My-Zsh directory structure already created..."
-    fi
+    confirm "  -> Install oh-my-zsh? [y/n]" && {
+        # Create directory structure
+        if [ ! -d "$OH_MY_ZSH_CUSTOM" ]; then
+            echo "  -> Creating zsh directory structure..."
+            mkdir -p $OH_MY_ZSH_PLUGINS
+            mkdir -p $OH_MY_ZSH_THEMES
+        else
+            echo "  -> Oh-My-Zsh directory structure already created..."
+        fi
 
-    # Install zsh-nvm
-    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-nvm" ]; then
-        echo "  -> Installing zsh-nvm..."
-        git clone https://github.com/lukechilds/zsh-nvm $OH_MY_ZSH_PLUGINS/zsh-nvm
-    else
-        echo "  -> zsh-nvm already installed"
-    fi
+        # Install zsh-nvm
+        if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-nvm" ]; then
+            confirm "  -> Install zsh-nvm? [y/n]" && {
+                echo "  -> Installing zsh-nvm..."
+                git clone https://github.com/lukechilds/zsh-nvm $OH_MY_ZSH_PLUGINS/zsh-nvm
+            }
+        else
+            echo "  -> zsh-nvm already installed"
+        fi
 
-    # Install zsh-autosuggestions
-    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-autosuggestions" ]; then
-        echo "  -> Installing zsh-autosuggestions..."
-        git clone https://github.com/zsh-users/zsh-autosuggestions $OH_MY_ZSH_PLUGINS/zsh-autosuggestions
-    else
-        echo "  -> zsh-autosuggestions already installed"
-    fi
+        # Install zsh-autosuggestions
+        if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-autosuggestions" ]; then
+            echo "  -> Installing zsh-autosuggestions..."
+            git clone https://github.com/zsh-users/zsh-autosuggestions $OH_MY_ZSH_PLUGINS/zsh-autosuggestions
+        else
+            echo "  -> zsh-autosuggestions already installed"
+        fi
 
-    # Install zsh-syntax-highlighting
-    if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
-        echo "  -> Installing zsh-syntax-highlighting..."
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting
-    else
-        echo "  -> zsh-syntax-highlighting already installed"
-    fi
+        # Install zsh-syntax-highlighting
+        if [ ! -d "$OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting" ]; then
+            echo "  -> Installing zsh-syntax-highlighting..."
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OH_MY_ZSH_PLUGINS/zsh-syntax-highlighting
+        else
+            echo "  -> zsh-syntax-highlighting already installed"
+        fi
 
-    # Install powerlevel9k
-    if [ ! -d "$OH_MY_ZSH_THEMES/powerlevel9k" ]; then
-        echo "  -> Installing powerlevel9k..."
-        git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_THEMES/powerlevel9k
-    else
-        echo "  -> powerlevel9k already installed"
-    fi
+        # Install powerlevel9k
+        if [ ! -d "$OH_MY_ZSH_THEMES/powerlevel9k" ]; then
+            confirm "  -> Install powerlevel9k? [y/n]" && {
+                echo "  -> Installing powerlevel9k..."
+                git clone https://github.com/bhilburn/powerlevel9k.git $OH_MY_ZSH_THEMES/powerlevel9k
+            }
+        else
+            echo "  -> powerlevel9k already installed"
+        fi
 
-    # Install Oh-My-Zsh with unattended mode
-    if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
-        echo "  -> Installing Oh My Zsh..."
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    else
-        echo "  -> Oh My Zsh already installed"
-    fi
+        # Install Oh-My-Zsh with unattended mode
+        if [ ! -f "$OH_MY_ZSH_ROOT/oh-my-zsh.sh" ]; then
+            echo "  -> Installing Oh My Zsh..."
+            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        else
+            echo "  -> Oh My Zsh already installed"
+        fi
+    }
 fi
 
 echo "-> Checking vim dependencies..."
@@ -355,26 +239,6 @@ if [ ! -d "$VIM_BUNDLE/nerdcommenter" ]; then
     }
 else
     echo "  -> NERD Commenter already installed"
-fi
-
-if [ ! -d "$VIM_BUNDLE/kotlin-vim" ]; then
-    confirm "  -> Install kotlin-vim? [y/n]" && {
-        # Installing kotlin-vim
-        echo "  -> Installing kotlin-vim"
-        git clone https://github.com/udalov/kotlin-vim.git $VIM_BUNDLE/kotlin-vim
-    }
-else
-    echo "  -> kotlin-vim already installed"
-fi
-
-if [ ! -d "$VIM_BUNDLE/vim-live-latex-preview" ]; then
-    confirm "  -> Install vim-live-latex-preview? [y/n]" && {
-        # Installing vim-live-latex-preview
-        echo "  -> Installing vim-live-latex-preview"
-        git clone https://github.com/ying17zi/vim-live-latex-preview.git $VIM_BUNDLE/vim-live-latex-preview
-    }
-else
-    echo "  -> vim-live-latex-preview already installed"
 fi
 
 if [ -f "$HOME/.config/yadm/files.gpg" ]; then
