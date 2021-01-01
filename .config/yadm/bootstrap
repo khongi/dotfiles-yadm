@@ -60,6 +60,8 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
             elif [ "$isArch" ]; then
                 sudo pacman -S zsh
             fi
+            mkdir -p $HOME/.cache/zsh
+            touch $HOME/.cache/zsh/history
         }
     else
         echo "  -> zsh already installed..."
