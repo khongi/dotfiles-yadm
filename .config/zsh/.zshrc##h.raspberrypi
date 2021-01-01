@@ -8,8 +8,6 @@ source $ZDOTDIR/.zshcommon
 
 ZSH_THEME="af-magic"
 
-#PROMPT="${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info) %#"
-#PROMPT='%(!.%{%F{yellow}%}.)$USER @ %{$fg[white]%}%M %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 RPROMPT='%t'
 
 plugins=(
@@ -18,8 +16,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   autojump
-  docker-compose
-  systemd
 )
 
 case $(tty) in
@@ -34,8 +30,5 @@ source $ZSH/oh-my-zsh.sh
 INJECTED=$HOME/custom/scripts
 export PATH=$INJECTED:$PATH
 
-alias wolmain="wakeonlan -p 9 -i 255.255.255.255 2c:4d:54:58:7b:5d"
-alias wolgt70="wakeonlan -p 9 -i 255.255.255.255 8c:89:a5:0c:02:5d"
-
-neofetch
+alias woldesktop="etherwake 2c:4d:54:58:7b:5d"
 
