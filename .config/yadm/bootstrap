@@ -10,7 +10,7 @@ cd $HOME
 SYSTEM_TYPE=$(uname -s)
 
 OH_MY_ZSH_ROOT="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$HOME/custom/zsh"
+ZSH_CUSTOM="$HOME/.config/zsh/custom"
 OH_MY_ZSH_PLUGINS="$ZSH_CUSTOM/plugins"
 OH_MY_ZSH_THEMES="$ZSH_CUSTOM/themes"
 
