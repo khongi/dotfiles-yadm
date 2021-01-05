@@ -167,7 +167,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
 
     confirm "  -> Install oh-my-zsh? [y/n]" && {
         # Create directory structure
-        if [ ! -d "$OH_MY_ZSH_CUSTOM" ]; then
+        if [ ! -d "$ZSH_CUSTOM" ]; then
             echo "  -> Creating zsh directory structure..."
             mkdir -p $OH_MY_ZSH_PLUGINS
             mkdir -p $OH_MY_ZSH_THEMES
