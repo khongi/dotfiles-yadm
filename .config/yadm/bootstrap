@@ -37,7 +37,7 @@ if [ "$SYSTEM_TYPE" = "Linux" ]; then
     isDebian=$(grep -Ei 'debian|buntu|mint' /etc/*release)
 
     isArch=false
-    if test -f "/etc/arch-release2"; then
+    if test -f "/etc/arch-release"; then
         isArch=true
     fi
 
