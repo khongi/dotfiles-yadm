@@ -46,4 +46,6 @@
     path = .gitconfig-personal
 [includeIf "gitdir:*/*[aA]ut[sS]oft/"]
     path = .gitconfig-autsoft
+[includeIf "gitdir:*/*[bB]ta/"]
+    path = .gitconfig-bta
 
