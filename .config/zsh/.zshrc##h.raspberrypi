@@ -30,5 +30,5 @@ source $ZSH/oh-my-zsh.sh
 INJECTED=$HOME/go/bin
 export PATH=$INJECTED:$PATH
 
-alias woldesktop="etherwake 2c:4d:54:58:7b:5d"
+alias woldesktop="wakeonlan 2c:4d:54:58:7b:5d"
 
