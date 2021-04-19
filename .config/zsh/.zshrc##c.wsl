@@ -46,6 +46,7 @@ bindkey "^K" history-search-forward
 
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 
+PATH=/home/khongor/go/bin:${PATH}
 PATH=$HOME/custom/scripts:${PATH}
 PATH=$GEM_HOME/bin:${PATH}
 
