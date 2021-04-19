@@ -9,7 +9,7 @@ source $ZDOTDIR/.powerlevel9k
 ZSH_THEME="robbyrussell"
 
 plugins=(
-  git vi-mode zsh-nvm zsh-autosuggestions zsh-syntax-highlighting
+  git vi-mode zsh-nvm zsh-autosuggestions zsh-syntax-highlighting autojump
 )
 
 case $(tty) in
