@@ -3,13 +3,14 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Source common config
 source $ZDOTDIR/.zshcommon
+source $ZDOTDIR/.powerlevel9k
 
 # Override common config
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 plugins=(
   autojump
-  git
+  gitfast
   zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting

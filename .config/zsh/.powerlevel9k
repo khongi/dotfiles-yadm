@@ -3,7 +3,7 @@
 # Khongor Bayarsaikhan - 2019
 
 #POWERLEVEL9K_MODE='awesome-fontconfig'
-#POWERLEVEL9K_MODE='nerdfont-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-fontconfig'
 
 POWERLEVEL9K_ALWAYS_SHOW_USER=false
 
@@ -17,7 +17,7 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # Start new line
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 
 # VCS settings
 # Advanced `vcs` color customization
@@ -28,10 +28,7 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='yellow'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
 
-# VI mode
-POWERLEVEL9K_VI_COMMAND_MODE_STRING='VI'
-
 # Prompt elements
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode root_indicator nvm background_jobs date)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 

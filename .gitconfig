@@ -48,4 +48,6 @@
     path = .gitconfig-autsoft
 [includeIf "gitdir:*/*[bB]ta/"]
     path = .gitconfig-bta
+[oh-my-zsh]
+	hide-dirty = 1
 
