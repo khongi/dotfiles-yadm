@@ -12,8 +12,8 @@ plugins=(
   zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting
-  docker-compose
   systemd
+  colored-man-pages
 )
 
 case $(tty) in
