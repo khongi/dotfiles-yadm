@@ -51,7 +51,7 @@ bindkey "^K" history-search-forward
 # autojump
 source /usr/share/autojump/autojump.zsh
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export JAVA_HOME=$(cat /home/khongor/custom/scripts/studio1 | grep AndroidStudio | awk '{print $1}' | tr -d '"' | sed 's/bin.*/jre/')
 export GEM_HOME=$(gem env | grep 'USER INSTALLATION DIRECTORY' | sed 's/.*: //')
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
@@ -64,3 +64,4 @@ PATH=$ANDROID_HOME/tools/bin:${PATH}
 
 export PATH=$PATH
 
+export COOKIECUTTER_CONFIG=$HOME/sources/bta/cookiecutter-emr-config.yaml
