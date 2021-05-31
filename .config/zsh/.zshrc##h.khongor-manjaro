@@ -64,4 +64,3 @@ PATH=$ANDROID_HOME/tools/bin:${PATH}
 
 export PATH=$PATH
 
-export COOKIECUTTER_CONFIG=$HOME/sources/bta/cookiecutter-emr-config.yaml
